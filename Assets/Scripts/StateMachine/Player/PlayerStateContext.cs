@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.StateMachine.Base;
-using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.StateMachine.Player
@@ -9,7 +8,9 @@ namespace Assets.Scripts.StateMachine.Player
     {
         [field: Header("Context")]
         [field: SerializeField] public int HitPoints { get; set; }
+        [field: SerializeField] public float StaminaPoints { get; set; }
         [field: SerializeField] public bool IsAttackAvailable { get; set; } = true;
+        [field: SerializeField] public bool IsJerkAvailable { get; set; } = true;
 
         [field: Header("Dependencies")]
         [field: SerializeField] public Scripts.Player Player { get; set; }
@@ -28,5 +29,10 @@ namespace Assets.Scripts.StateMachine.Player
         [field: SerializeField] public AttackData LongAttackData { get; private set; }
         [field: SerializeField] public AttackData ArcherAttackData { get; set; }
         [field: SerializeField] public string TargetTag { get; set; }
+
+        [field: Header("Jerk Settings")]
+        [field: SerializeField] public float MaximalStaminaPoints { get; set; }
+        [field: SerializeField] public float StaminaRegeneration { get; set; }
+        [field: SerializeField] public float BetweenJerkDelay { get; set; }
     }
 }

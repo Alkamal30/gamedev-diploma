@@ -1,6 +1,7 @@
 using Assets.Scripts.Abstraction;
 using Assets.Scripts.StateMachine.Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -9,6 +10,8 @@ namespace Assets.Scripts
         [SerializeField] private PlayerStateContext _context;
         [SerializeField] private BasePlayerStateBehaviour _stateBehaviour;
         [SerializeField] private DamageAnimation _damageAnimation;
+        [SerializeField] private Image _healthBar;
+        [SerializeField] private Image _staminaBar;
 
         public int HitPoints => _context.HitPoints;
 
@@ -26,6 +29,7 @@ namespace Assets.Scripts
         private void Awake()
         {
             _context.HitPoints = _context.MaximalHitPoints;
+            _context.StaminaPoints = _context.MaximalStaminaPoints;
         }
 
         private void Update()
@@ -34,6 +38,9 @@ namespace Assets.Scripts
             {
                 _stateBehaviour.Attack();
             }
+
+            _healthBar.fillAmount = (float) _context.HitPoints / _context.MaximalHitPoints;
+            _staminaBar.fillAmount = _context.StaminaPoints / _context.MaximalStaminaPoints;
         }
 
         private void Die()

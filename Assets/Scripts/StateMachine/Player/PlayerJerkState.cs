@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.StateMachine.Player;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.StateMachine
@@ -26,6 +27,10 @@ namespace Assets.Scripts.StateMachine
                 * Context.JerkLength;
 
             Rigidbody.velocity = Vector2.zero;
+            Context.StaminaPoints -= 1f;
+            Context.IsJerkAvailable = false;
+
+            Context.StartCoroutine(MakeJerkAvailable());
         }
 
         public override void Stop()
@@ -36,6 +41,8 @@ namespace Assets.Scripts.StateMachine
 
         public override void Update()
         {
+            base.Update();
+
             float t = (Time.time - _jerkStartTime) / Context.JerkDuration;
 
             Vector2 newPosition = Vector2.Lerp(_jerkSource.Value, _jerkTarget.Value, t);
@@ -49,6 +56,13 @@ namespace Assets.Scripts.StateMachine
 
         public override void Attack()
         {
+        }
+
+        private IEnumerator MakeJerkAvailable()
+        {
+            yield return new WaitForSeconds(Context.BetweenJerkDelay);
+
+            Context.IsJerkAvailable = true;
         }
     }
 }

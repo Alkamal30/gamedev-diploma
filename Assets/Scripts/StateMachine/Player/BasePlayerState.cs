@@ -23,6 +23,11 @@ namespace Assets.Scripts.StateMachine
             StateSwitcher.SwitchState<PlayerDeadState>();
         }
 
+        public override void Update()
+        {
+            UpdateStamina();
+        }
+
         protected Vector2 GetAxisValues()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
@@ -37,6 +42,19 @@ namespace Assets.Scripts.StateMachine
             Vector2 lookDirection = mousePosition - (Vector2) Context.transform.position;
 
             return lookDirection.normalized;
+        }
+
+        protected bool IsJerkAvailable()
+        {
+            return Input.GetKeyDown(KeyCode.Space)
+                && Context.StaminaPoints >= 1f
+                && Context.IsJerkAvailable;
+        }
+
+        private void UpdateStamina()
+        {
+            Context.StaminaPoints += Context.StaminaRegeneration * Time.deltaTime;
+            Context.StaminaPoints = Mathf.Clamp(Context.StaminaPoints, 0f, Context.MaximalStaminaPoints);
         }
     }
 }

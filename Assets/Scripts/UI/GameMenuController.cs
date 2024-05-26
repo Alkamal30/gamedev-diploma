@@ -7,6 +7,7 @@ namespace Assets.Scripts.UI
     public class GameMenuController : MonoBehaviour
     {
         [SerializeField] private GameObject _menuPanel;
+        [SerializeField] private GameObject _backgroundShadow;
 
         private GameObject _currentPanel;
 
@@ -50,12 +51,28 @@ namespace Assets.Scripts.UI
             _currentPanel?.SetActive(false);
             _currentPanel = newPanel;
             _currentPanel?.SetActive(true);
+
+            if(newPanel != null)
+            {
+                ShowBackgroundShadow();
+            }
         }
 
         private void CloseCurrentPanel()
         {
             _currentPanel?.SetActive(false);
             _currentPanel = null;
+            HideBackgroundShadow();
+        }
+
+        private void ShowBackgroundShadow()
+        {
+            _backgroundShadow?.SetActive(true);
+        }
+
+        private void HideBackgroundShadow()
+        {
+            _backgroundShadow?.SetActive(false);
         }
     }
 }

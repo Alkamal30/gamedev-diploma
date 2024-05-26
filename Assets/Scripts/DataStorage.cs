@@ -6,7 +6,7 @@ namespace Assets.Scripts
 {
     public static class DataStorage
     {
-        private readonly static string _directoryPath = "/Saves";
+        private readonly static string _directoryPath = "/PixelvalorSaves";
         private readonly static string _slotNameTemplate = "CharacterSlot_{0}.save";
 
         public static bool IsSlotDataExists(int index)

@@ -23,6 +23,7 @@ namespace Assets.Scripts.StateMachine
 
         public override void Update()
         {
+            base.Update();
             Move();
             Jerk();
         }
@@ -50,7 +51,7 @@ namespace Assets.Scripts.StateMachine
 
         private void Jerk()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (IsJerkAvailable())
             {
                 StateSwitcher.SwitchState<PlayerJerkState>();
             }
