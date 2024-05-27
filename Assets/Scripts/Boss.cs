@@ -29,7 +29,6 @@ namespace Assets.Scripts
             else if( _context.HitPoints <= 8f)
             {
                 _context.Wave = 3;
-                _stateBehaviour.SwitchState<BossAggressiveAttackState>();
             }
             else if (_context.HitPoints <= 15)
             {

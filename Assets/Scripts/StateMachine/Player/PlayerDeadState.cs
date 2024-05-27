@@ -23,6 +23,8 @@ namespace Assets.Scripts.StateMachine.Player
         {
             yield return new WaitForSeconds(Context.DeadDelay);
 
+            Context.OnDied.Invoke();
+
             Object.Destroy(Context.gameObject);
         }
     }

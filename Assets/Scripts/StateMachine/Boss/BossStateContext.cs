@@ -24,6 +24,7 @@ namespace Assets.Scripts.StateMachine.Boss
         [field: SerializeField] public Seeker Seeker { get; set; }
         [field: SerializeField] public AnimationController AnimationController { get; set; }
         [field: SerializeField] public GameObject DynamitePrefab { get; set; }
+        [field: SerializeField] public DynamiteRainScript DynamiteRain { get; set; }
 
         [field: Header("Settings")]
         [field: SerializeField] public float DeadDelay { get; set; }

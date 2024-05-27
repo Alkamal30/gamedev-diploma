@@ -7,6 +7,8 @@ namespace Assets.Scripts.UI
     public class GameMenuController : MonoBehaviour
     {
         [SerializeField] private GameObject _menuPanel;
+        [SerializeField] private GameObject _losePanel;
+        [SerializeField] private GameObject _victoryPanel;
         [SerializeField] private GameObject _backgroundShadow;
         [SerializeField] private GameObject _bossHealthBar;
 
@@ -22,6 +24,16 @@ namespace Assets.Scripts.UI
             CloseCurrentPanel();
         }
 
+        public void OpenLosePanel()
+        {
+            ChangeCurrentPanel(_losePanel);
+        }
+
+        public void OpenVictoryPanel()
+        {
+            ChangeCurrentPanel(_victoryPanel);
+        }
+
         public void ShowBossHealthBar()
         {
             _bossHealthBar.SetActive(true);
@@ -30,6 +42,11 @@ namespace Assets.Scripts.UI
         public void HideBossHealthBar()
         {
             _bossHealthBar.SetActive(false);
+        }
+
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene("MainScene");
         }
 
         public void QuitToMainMenu()

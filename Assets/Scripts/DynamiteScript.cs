@@ -6,6 +6,7 @@ public class DynamiteScript : MonoBehaviour
 {
     [SerializeField] private float _explosionDuration;
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _shadow;
     public Vector2 TargetPosition { get; set; }
     public float Duration { get; set; }
 
@@ -30,6 +31,10 @@ public class DynamiteScript : MonoBehaviour
 
         float time = Mathf.Clamp(Time.time - _startTime, 0f, Duration) / Duration;
         transform.position = Vector2.Lerp(_startPosition, TargetPosition, time);
+
+        _shadow.transform.position = TargetPosition;
+        _shadow.transform.eulerAngles = Vector3.zero;
+        _shadow.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one / 2f, time);
 
         if (time == 1f)
         {

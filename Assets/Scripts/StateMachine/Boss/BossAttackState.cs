@@ -44,7 +44,14 @@ namespace Assets.Scripts.StateMachine.Boss
         {
             yield return new WaitForSeconds(Context.AttackData.Time);
 
-            StateSwitcher.SwitchState<BossFollowToTargetState>();
+            if(Context.Wave == 3)
+            {
+                StateSwitcher.SwitchState<BossAggressiveAttackState>();
+            }
+            else
+            {
+                StateSwitcher.SwitchState<BossFollowToTargetState>();
+            }
         }
 
         private IEnumerator MakeAttackAvailable()

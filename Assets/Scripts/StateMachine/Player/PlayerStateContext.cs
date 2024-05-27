@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Models;
 using Assets.Scripts.StateMachine.Base;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.StateMachine.Player
 {
@@ -34,5 +35,8 @@ namespace Assets.Scripts.StateMachine.Player
         [field: SerializeField] public float MaximalStaminaPoints { get; set; }
         [field: SerializeField] public float StaminaRegeneration { get; set; }
         [field: SerializeField] public float BetweenJerkDelay { get; set; }
+
+        [field: Header("Events")]
+        [field: SerializeField] public UnityEvent OnDied { get; set; } = new UnityEvent();
     }
 }
