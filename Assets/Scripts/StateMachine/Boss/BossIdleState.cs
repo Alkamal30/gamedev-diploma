@@ -18,6 +18,11 @@ namespace Assets.Scripts.StateMachine.Boss
             Context.HitPoints = Context.MaximalHitPoints;
         }
 
+        public override void Stop()
+        {
+            base.Stop();
+        }
+
         public override void Update()
         {
             base.Update();
@@ -40,6 +45,7 @@ namespace Assets.Scripts.StateMachine.Boss
 
         private void ToAggressTarget(Transform target)
         {
+            Context.OnBossFightStarted.Invoke();
             Context.Target = target;
             Context.Wave = 1;
             Context.StartCoroutine(StartBossFight());

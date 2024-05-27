@@ -23,6 +23,9 @@ namespace Assets.Scripts.StateMachine.Boss
         {
             yield return new WaitForSeconds(Context.DeadDelay);
 
+            Context.OnBossFightFinished.Invoke();
+            Context.OnBossDied.Invoke();
+
             Object.Destroy(Context.gameObject);
         }
     }

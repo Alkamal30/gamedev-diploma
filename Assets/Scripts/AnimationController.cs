@@ -37,6 +37,8 @@ public class AnimationController : MonoBehaviour
 
     public void SetMovementDirection(Vector2 direction)
     {
+        direction = direction.normalized * 10f;
+
         _animator.SetFloat("MovementDirectionX", direction.x);
     }
 

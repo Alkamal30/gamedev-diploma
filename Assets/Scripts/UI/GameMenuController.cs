@@ -8,6 +8,7 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private GameObject _menuPanel;
         [SerializeField] private GameObject _backgroundShadow;
+        [SerializeField] private GameObject _bossHealthBar;
 
         private GameObject _currentPanel;
 
@@ -19,6 +20,16 @@ namespace Assets.Scripts.UI
         public void CloseMenu()
         {
             CloseCurrentPanel();
+        }
+
+        public void ShowBossHealthBar()
+        {
+            _bossHealthBar.SetActive(true);
+        }
+
+        public void HideBossHealthBar()
+        {
+            _bossHealthBar.SetActive(false);
         }
 
         public void QuitToMainMenu()

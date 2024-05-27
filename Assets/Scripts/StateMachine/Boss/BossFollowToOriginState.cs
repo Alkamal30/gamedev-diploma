@@ -19,6 +19,7 @@ namespace Assets.Scripts.StateMachine.Boss
             Context.AIPath.endReachedDistance = 0.1f;
             Context.AIPath.destination = Context.OriginPosition;
             Context.HitPoints = Context.MaximalHitPoints;
+            Context.OnBossFightFinished.Invoke();
         }
 
         public override void Stop()

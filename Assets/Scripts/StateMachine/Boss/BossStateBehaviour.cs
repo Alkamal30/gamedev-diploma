@@ -28,6 +28,7 @@ namespace Assets.Scripts.StateMachine.Boss
                 new BossDeadState(this, _context),
                 new BossFollowToTargetState(this, _context),
                 new BossFollowToOriginState(this, _context),
+                new BossAttackState(this, _context),
             });
 
             SwitchState<BossIdleState>();

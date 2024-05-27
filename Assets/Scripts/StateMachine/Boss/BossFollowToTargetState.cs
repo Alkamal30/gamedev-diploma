@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.StateMachine.Boss
 {
-    public class BossFollowToTargetState : BaseBossState
+    public class BossFollowToTargetState : BossMovementState
     {
         public BossFollowToTargetState(IStateSwitcher<BossStateContext> stateSwitcher, BossStateContext context)
             : base(stateSwitcher, context)
@@ -32,11 +32,24 @@ namespace Assets.Scripts.StateMachine.Boss
         {
             base.Update();
 
+            if (IsAttackAvailable())
+            {
+                StateSwitcher.SwitchState<BossAttackState>();
+                return;
+            }
+
             if (IsEnemyLeaveAggressionArea())
             {
                 StateSwitcher.SwitchState<BossFollowToOriginState>();
                 return;
             }
+        }
+
+        private bool IsAttackAvailable()
+        {
+            return Context.IsAttackAvailable
+                && _reachedCheckAvailable
+                && Context.AIPath.reachedEndOfPath;
         }
 
         private bool IsEnemyLeaveAggressionArea()
