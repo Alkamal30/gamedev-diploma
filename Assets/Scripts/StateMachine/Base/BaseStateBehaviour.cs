@@ -35,7 +35,7 @@ namespace Assets.Scripts.StateMachine.Base
 
         private void Update()
         {
-            _currentState.Update();
+            _currentState?.Update();
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace Assets.Scripts.StateMachine.Enemy
+﻿namespace Assets.Scripts.StateMachine.Boss
 {
-    public class EnemyMovementState : BaseEnemyState
+    public class BossMovementState : BaseBossState
     {
-        public EnemyMovementState(IStateSwitcher<EnemyStateContext> stateSwitcher, EnemyStateContext context)
+        public BossMovementState(IStateSwitcher<BossStateContext> stateSwitcher, BossStateContext context)
             : base(stateSwitcher, context)
         {
         }

@@ -111,8 +111,7 @@ public class MenuController : MonoBehaviour
 
         await DataStorage.SaveSlotDataAsync(data);
 
-        _betweenSceneData.SlotData = data;
-        SceneManager.LoadScene("MainScene");
+        await ShowOverviewCharacterPanel();
     }
 
     public void SelectWarrior()
