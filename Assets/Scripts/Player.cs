@@ -42,6 +42,11 @@ namespace Assets.Scripts
 
             _context.GoldCount++;
 
+            InstantiateGold();
+        }
+
+        public void InstantiateGold()
+        {
             Instantiate(_goldItemPrefab, _goldItemsParent);
         }
 
@@ -80,7 +85,7 @@ namespace Assets.Scripts
                 return;
             }
 
-            _context.GoldCount++;
+            _context.GoldCount--;
 
             if(_goldItemsParent.childCount > 0)
             {
@@ -88,10 +93,14 @@ namespace Assets.Scripts
             }
         }
 
-        private void Awake()
+        private void Start()
         {
-            _context.HitPoints = _context.MaximalHitPoints;
             _context.StaminaPoints = _context.MaximalStaminaPoints;
+
+            for (int i = 0; i < _context.GoldCount; i++)
+            {
+                InstantiateGold();
+            }
         }
 
         private void Update()

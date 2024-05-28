@@ -13,7 +13,7 @@ namespace Assets.Scripts.Items
             {
                 _onItemPickup.Invoke();
 
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

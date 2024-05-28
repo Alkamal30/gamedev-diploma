@@ -11,5 +11,13 @@ namespace Assets.Scripts
         public PlayerClassEnum PlayerClass;
 
         public string PlayerName;
+
+        public int MaximalHealthPoints;
+
+        public float MaximalStaminaPoints;
+
+        public int HitPoints;
+
+        public int GoldCount;
     }
 }

@@ -107,6 +107,9 @@ public class MenuController : MonoBehaviour
             SlotId = _currentSlot.Value,
             PlayerClass = _currentPlayerClass,
             PlayerName = playerName,
+            MaximalHealthPoints = 3,
+            MaximalStaminaPoints = 2f,
+            HitPoints = 3,
         };
 
         await DataStorage.SaveSlotDataAsync(data);
@@ -141,7 +144,6 @@ public class MenuController : MonoBehaviour
     private async Task ShowOverviewCharacterPanel()
     {
         SlotData data = await DataStorage.LoadSlotDataAsync(_currentSlot.Value);
-        Debug.Log(data.PlayerClass.ToString());
         if (data.PlayerClass == PlayerClassEnum.Archer)
         {
             _overviewChooserAnimator.runtimeAnimatorController = _chooseArcherAnimatorController;
