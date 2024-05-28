@@ -9,6 +9,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameObject _menuPanel;
         [SerializeField] private GameObject _losePanel;
         [SerializeField] private GameObject _victoryPanel;
+        [SerializeField] private GameObject _skillsPanel;
+        [SerializeField] private GameObject _hudPanel;
         [SerializeField] private GameObject _backgroundShadow;
         [SerializeField] private GameObject _bossHealthBar;
 
@@ -32,6 +34,16 @@ namespace Assets.Scripts.UI
         public void OpenVictoryPanel()
         {
             ChangeCurrentPanel(_victoryPanel);
+        }
+
+        public void OpenSkillsPanel()
+        {
+            ChangeCurrentPanel(_skillsPanel);
+        }
+
+        public void CloseSkillsPanel()
+        {
+            CloseCurrentPanel();
         }
 
         public void ShowBossHealthBar()
@@ -72,10 +84,22 @@ namespace Assets.Scripts.UI
                     ChangeCurrentPanel(_menuPanel);
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.I))
+            {
+                if (_currentPanel != null)
+                {
+                    CloseCurrentPanel();
+                }
+                else
+                {
+                    ChangeCurrentPanel(_skillsPanel);
+                }
+            }
         }
 
         private void ChangeCurrentPanel(GameObject newPanel)
         {
+            _hudPanel?.SetActive(false);
             _currentPanel?.SetActive(false);
             _currentPanel = newPanel;
             _currentPanel?.SetActive(true);
@@ -88,6 +112,7 @@ namespace Assets.Scripts.UI
 
         private void CloseCurrentPanel()
         {
+            _hudPanel?.SetActive(true);
             _currentPanel?.SetActive(false);
             _currentPanel = null;
             HideBackgroundShadow();

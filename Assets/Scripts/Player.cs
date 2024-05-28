@@ -12,6 +12,8 @@ namespace Assets.Scripts
         [SerializeField] private DamageAnimation _damageAnimation;
         [SerializeField] private Image _healthBar;
         [SerializeField] private Image _staminaBar;
+        [SerializeField] private Transform _goldItemsParent;
+        [SerializeField] private GameObject _goldItemPrefab;
 
         public int HitPoints => _context.HitPoints;
 
@@ -23,6 +25,66 @@ namespace Assets.Scripts
             if (_context.HitPoints <= 0f)
             {
                 Die();
+            }
+        }
+
+        public void RestoreHealth()
+        {
+            _context.HitPoints = _context.MaximalHitPoints;
+        }
+
+        public void IncreaseGoldCount()
+        {
+            if(!gameObject.activeSelf)
+            {
+                return;
+            }
+
+            _context.GoldCount++;
+
+            Instantiate(_goldItemPrefab, _goldItemsParent);
+        }
+
+        public void UpHealth()
+        {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+
+            if(_context.GoldCount > 0)
+            {
+                _context.MaximalHitPoints++;
+                ReduceGoldCount();
+            }
+        }
+
+        public void UpStamina()
+        {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+
+            if (_context.GoldCount > 0)
+            {
+                _context.MaximalStaminaPoints++;
+                ReduceGoldCount();
+            }
+        }
+
+        private void ReduceGoldCount()
+        {
+            if(!gameObject.activeSelf)
+            {
+                return;
+            }
+
+            _context.GoldCount++;
+
+            if(_goldItemsParent.childCount > 0)
+            {
+                Destroy(_goldItemsParent.GetChild(0).gameObject);
             }
         }
 

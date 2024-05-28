@@ -12,6 +12,7 @@ namespace Assets.Scripts.StateMachine.Player
         [field: SerializeField] public float StaminaPoints { get; set; }
         [field: SerializeField] public bool IsAttackAvailable { get; set; } = true;
         [field: SerializeField] public bool IsJerkAvailable { get; set; } = true;
+        [field: SerializeField] public int GoldCount { get; set; }
 
         [field: Header("Dependencies")]
         [field: SerializeField] public Scripts.Player Player { get; set; }
