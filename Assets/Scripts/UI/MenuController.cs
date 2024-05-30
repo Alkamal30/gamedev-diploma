@@ -2,7 +2,6 @@ using Assets.Scripts;
 using Assets.Scripts.Models.Enums;
 using System.Threading.Tasks;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,8 +28,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private RectTransform _chooseArcherRibbon;
     [SerializeField] private Animator _chooserAnimator;
     [SerializeField] private Animator _overviewChooserAnimator;
-    [SerializeField] private AnimatorController _chooseWarriorAnimatorController;
-    [SerializeField] private AnimatorController _chooseArcherAnimatorController;
+    [SerializeField] private RuntimeAnimatorController _chooseWarriorAnimatorController;
+    [SerializeField] private RuntimeAnimatorController _chooseArcherAnimatorController;
 
     private GameObject _currentPanel;
     private int? _currentSlot;

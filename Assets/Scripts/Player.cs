@@ -116,6 +116,7 @@ namespace Assets.Scripts
 
         private void Die()
         {
+            AudioController.Instance.PlayDeathClip();
             _stateBehaviour.Dead();
         }
     }
